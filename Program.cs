@@ -1,12 +1,6 @@
-﻿// # PP- Oppgaver Uke 3!
-//2) **Chættbått’n**
-//Du skal lage en app hvor man kan lage sin egen chatbot - og deretter velge å snakke med den 🙂
-//Brukeren skal få prompt på chættbått navn, og deretter mulighet til å skrive inn forskjellige tilbakemeldinger/ svar som chættbått’n skal trekke et tilfeldig svar fra og svare brukeren med når den startes opp.
-//Bruk gjerne en meny for å gå inn i de forskjellige modusene: “mekke en chættbått” og “preke med en chættbått”
-//***BONUS:***
-//Mulighet til å lage flere chættbåtts, brukeren skal kunne se en liste av tilgjengelige chættbåtts og velge hvem h*n vil snakke med - her må det brukes List fra neste ukes pensum. 
-//
-//*Lykke til!*
+﻿// CURRENTLY CAN'T CREATE NEW BOTS, ONLY RENAME THE ORIGINAL AND ADD TO THE ANSWER-LIST.
+// OUT OF TIME
+
 
 using par_programmering_02;
 
@@ -15,17 +9,31 @@ Console.Clear();
 // Create an instance of a bot
 Bot bot_1 = new Bot();
 
-// Get the name of the bot
-bot_1.PromptName();
-Console.WriteLine($"Bot name: {bot_1.Name}");
+string currentSelected;
 
-// Give input to bot to get later as answers
-bot_1.PromptPossibleAnswers();
-Console.Clear();
+while (true)
+{
+    // Get the name of the bot
+    bot_1.PromptName();
+    Console.WriteLine($"Bot name: {bot_1.Name}");
 
-// Print menu
-var currentSelected = bot_1.GetMenuSelect();
+    // Give input to bot to get later as answers
+    bot_1.PromptPossibleAnswers();
+    // Clean the console after getting answers
+    Console.Clear();
 
-// ChatLoop
-bot_1.Chat();
+    currentSelected = bot_1.GetMenuSelect();
+
+    if (currentSelected == "1")
+    {
+        // Rename the original bot / restart
+        Console.Clear();
+        continue;
+    }
+    else if (currentSelected == "2")
+    {
+        // ChatLoop
+        bot_1.Chat();
+    }
+}
 

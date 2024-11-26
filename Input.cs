@@ -70,11 +70,12 @@ namespace par_programmering_02
 
             while (true)
             {
+                Console.Write("Message: ");
                 var userInput = Console.ReadLine();
                 if (userInput != "Bye!")
                 {
-                    Console.WriteLine($"You wrote: {userInput}");
                     Console.WriteLine($"{Name} wrote: {GetRandomAnswer()}");
+                    Console.WriteLine("-------------------------");
                 }
                 else
                 {
