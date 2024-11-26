@@ -30,48 +30,57 @@ namespace par_programmering_02
             }
         }
 
-        public int GetMenuSelect()
+        public string GetMenuSelect()
         {
-            int option;
+            string option;
 
             do
             {
-                Console.WriteLine("\nWelcome!\nCoose your option!\n[1] Create a chatbot\n[2] Chat with chatbot");
-                var o = Console.ReadLine();
+                Console.WriteLine("\nWelcome!\nChoose your option!\n[1] Create a chatbot\n[2] Chat with chatbot");
+                option = Console.ReadLine();
 
-                try
+                switch (option)
                 {
-                    option = Int32.Parse(o);
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("NOT A NUMBER, TRY AGAIN!");
-                    Thread.Sleep(1000);
-                    Console.Clear();
-                    continue;
-                }
-
-                //try
-                //{
-                //    guessNum = Int32.Parse(guess);
-                //}
-                //// if the input is anything but a number.
-                //catch (FormatException)
-                //{
-                //    CleanConsole(1);
-                //    continue;
-                //}
-
-                if (option != 1 || option != 2)
-                {
-                    Console.WriteLine("You need to choose between either [1] or [2]!");
-                    Console.Clear();
+                    case "1":
+                        return "1";
+                    case "2":
+                        return "2";
+                    default:
+                        Console.WriteLine("NOT AN OPTION, TRY AGAIN. PLEASE.");
+                        Thread.Sleep(1000);
+                        Console.Clear();
+                        break;
                 }
             }
-            while (option != 1 || option != 2);
+            while (true);
 
-            Console.WriteLine($"You chose {option}");
-            return option;
+        }
+
+        public string GetRandomAnswer()
+        {
+            Random rand = new Random();
+            int index = rand.Next(0, Answers.Count);
+            return Answers[index];
+        }
+
+        public void Chat()
+        {
+            Console.WriteLine("\nStart chatting with your bot! Ask a question!");
+            Console.WriteLine("\nType 'Bye!' to stop chatting!");
+
+            while (true)
+            {
+                var userInput = Console.ReadLine();
+                if (userInput != "Bye!")
+                {
+                    Console.WriteLine($"You wrote: {userInput}");
+                    Console.WriteLine($"{Name} wrote: {GetRandomAnswer()}");
+                }
+                else
+                {
+                    break;
+                }
+            }
         }
     }
 }

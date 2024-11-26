@@ -24,4 +24,8 @@ bot_1.PromptPossibleAnswers();
 Console.Clear();
 
 // Print menu
-int currentSelected = bot_1.GetMenuSelect();
+var currentSelected = bot_1.GetMenuSelect();
+
+// ChatLoop
+bot_1.Chat();
+
